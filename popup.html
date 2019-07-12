@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>MyToDo</title>
+    <link rel="stylesheet" href="css/ui.css">
+    <style type="text/css">
+        body {
+            width: 400px;
+            /* height: 600px; */
+        }
+        
+        #add_form .ui-input {
+            margin-bottom: 10px;
+        }
+        
+        #add_btn {
+            margin-bottom: 10px;
+        }
+        
+        .finished {
+            color: #a6a6a6;
+        }
+        
+        .statics {
+            margin-top: 20px;
+        }
+    </style>
+</head>
+
+<body>
+    <button id="add_btn" href="javascript:" class="ui-button ui-button-warning" role="button">add aim</button>
+    <form style="display: none" id="add_form">
+        <div class="ui-input"><input placeholder="任务/目标" id="new_aim"></div>
+        <div class="ui-input ui-date-input"><input type="date" id="new_date"></div>
+        <input type="button" value="提交" id="sbt_btn" class="ui-button ui-button-primary">
+    </form>
+    <div>
+        <table class="ui-table" id="aim_list">
+        </table>
+    </div>
+    <div class="statics">
+        <div id="chart" style="width: 400px;height: 400px;"></div>
+    </div>
+    <!-- <script type="text/javascript" src="js/jquery.min.js"></script> -->
+    <script type="text/javascript" src="js/jquery.js"></script>
+    <script type="text/javascript" src="js/all.js"></script>
+    <script type="text/javascript" src="js/echarts.min.js"></script>
+    <script type="text/javascript" src="js/popup.js"></script>
+
+</body>
+
+</html>

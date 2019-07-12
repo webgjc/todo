@@ -16,3 +16,6 @@
 2. [Echarts](https://echarts.baidu.com/tutorial.html#5%20%E5%88%86%E9%92%9F%E4%B8%8A%E6%89%8B%20ECharts)
 3. [官方轮子](https://developer.chrome.com/extensions)
 4. [插件教程](https://www.cnblogs.com/liuxianan/p/chrome-plugin-develop.html)
+
+## 效果图
+![效果](http://puifc7s9j.bkt.clouddn.com/20190712121735.jpg)

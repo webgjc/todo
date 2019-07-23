@@ -6,11 +6,11 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>MyToDo</title>
-    <link rel="stylesheet" href="css/ui.css">
+    <link rel="stylesheet" href="../css/ui.css">
     <style type="text/css">
         body {
-            width: 400px;
             /* height: 600px; */
+            width: auto;
         }
         
         #add_form .ui-input {
@@ -26,7 +26,14 @@
         }
         
         .statics {
+            overflow-x: auto;
+            width: 400px;
             margin-top: 20px;
+        }
+        
+        .clear_label {
+            color: #0077ff;
+            font-size: 15px;
         }
     </style>
 </head>
@@ -45,11 +52,25 @@
     <div class="statics">
         <div id="chart" style="width: 400px;height: 400px;"></div>
     </div>
-    <!-- <script type="text/javascript" src="js/jquery.min.js"></script> -->
-    <script type="text/javascript" src="js/jquery.js"></script>
-    <script type="text/javascript" src="js/all.js"></script>
-    <script type="text/javascript" src="js/echarts.min.js"></script>
-    <script type="text/javascript" src="js/popup.js"></script>
+    <div class="statics">
+        <div id="size_chart" style="width: 400px;height: 400px"></div>
+    </div>
+    <div class="statics">
+        <div id="timer_chart" style="width: 400px; height:400px"></div>
+    </div>
+    <div style="margin-top: 10px">
+        <button id="clear_timer_chart" class="ui-button ui-button-success">清空访问次数</button>
+        <button id="clear_size_chart" class="ui-button ui-button-success">清空页面大小</button>
+        <button id="clear_timer_chart" class="ui-button ui-button-success">清空访问时间</button>
+    </div>
+    <div style="margin-top: 10px">
+        <span class="clear_label">每日清空： </span>
+        <input type="checkbox" id="day_clear"><label class="ui-switch" for="day_clear"></label>
+    </div>
+    <script type="text/javascript" src="../js/jquery.js"></script>
+    <script type="text/javascript" src="../js/all.js"></script>
+    <script type="text/javascript" src="../js/echarts.min.js"></script>
+    <script type="text/javascript" src="../js/popup.js"></script>
 
 </body>
 

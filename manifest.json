@@ -5,7 +5,7 @@
 
     "description": "任务目标管理",
     "browser_action": {
-        "default_popup": "popup.html",
+        "default_popup": "html/popup.html",
         "default_icon": {
             "16": "images/get_started16.png",
             "32": "images/get_started32.png",
@@ -30,14 +30,21 @@
     ],
     "author": "again",
     "background": {
-        "scripts": ["background.js"],
-        "persistent": false
+        "page": "html/background.html"
+            // "scripts": ["js/background.js"],
+            // "persistent": false
     },
-    "permissions": ["storage", "notifications", "<all_urls>"],
-    "options_ui": {
-        "page": "options.html",
-        "chrome_style": true
-    },
+    "permissions": [
+        "storage",
+        "notifications",
+        "<all_urls>",
+        "tabs"
+    ],
+    "options_page": "html/options.html",
+    // "options_ui": {
+    //     "page": "html/options.html",
+    //     "chrome_style": true
+    // },
     "icons": {
         "16": "images/get_started16.png",
         "32": "images/get_started32.png",

@@ -253,9 +253,9 @@ function make_timer_chart() {
                     if (data.value < 60) {
                         value = data.value + "秒";
                     } else if (data.value >= 60 && data.value < 3600) {
-                        value = parseInt(data.value / 60) + "分钟"
+                        value = (data.value / 60).toFixed(3) + "分钟"
                     } else if (data.value >= 3600) {
-                        value = data.value / 3600 + "小时"
+                        value = (data.value / 3600).toFixed(3) + "小时"
                     }
                     return data.seriesName + '<br/>' + data.name + '：' + value;
                 }

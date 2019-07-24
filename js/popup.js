@@ -266,17 +266,17 @@ function make_timer_chart() {
 }
 make_timer_chart()
 
-$("#clear_chart").click(function() {
-    var confirm_btn = $(this);
-    new Dialog().confirm('确定清空数据?', {
-        buttons: [{
-            events: function(event) {
-                chrome.storage.local.set({ "todo_urls": {} });
-                event.data.dialog.remove();
-            }
-        }, {}]
-    })
-})
+// $("#clear_chart").click(function() {
+//     var confirm_btn = $(this);
+//     new Dialog().confirm('确定清空数据?', {
+//         buttons: [{
+//             events: function(event) {
+//                 chrome.storage.local.set({ "todo_urls": {} });
+//                 event.data.dialog.remove();
+//             }
+//         }, {}]
+//     })
+// })
 
 // function get_music() {
 //     var music_list_url = "http://m.kugou.com/zlist/list?listid=2&type=0&uid=668132723&sign=588497f559c65de2e406a95b227fc64b&_t=1563001403&pagesize=9999&json=&page=1&token=80aeff0b428c234f0e656c6908661ab20244f5100f1086da36dd2c66c426eebc"
@@ -293,7 +293,7 @@ $("#clear_chart").click(function() {
 //     console.log(res)
 // }
 
-$("#clear_timer_chart").click(function() {
+$("#clear_chart").click(function() {
     chrome.storage.local.set({ "todo_urls": {} })
 })
 

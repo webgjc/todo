@@ -18,21 +18,21 @@ function tip(info) {
     }, 3000);
 }
 
-function set_today() {
-    chrome.storage.local.get(["todo_day_clear", "todo_day"], function(res) {
-        today = new Date().getDate()
-        if (res.todo_day_clear == true && res.todo_day != undefined && res.todo_day != today) {
-            chrome.storage.local.set({ "todo_urls": {} })
-            chrome.storage.local.set({ "todo_resource_size": {} })
-            chrome.storage.local.set({ "todo_view_timer": {} })
-        }
+chrome.storage.local.get(["todo_day_clear", "todo_day"], function(res) {
+    today = new Date().getDate()
+    if (res.todo_day_clear == true && res.todo_day != undefined && res.todo_day != today) {
+        chrome.storage.local.set({ "todo_resource_size": {} })
+        chrome.storage.local.set({ "todo_view_timer": {} })
+        chrome.storage.local.set({ "todo_urls": {} })
         chrome.storage.local.set({ "todo_day": new Date().getDate() });
-    })
-}
+    }
 
-set_today()
+})
 
 chrome.storage.local.get(["aim_list"], function(res) {
+    if (res.aim_list == undefined) {
+        return
+    }
     aim_list = res.aim_list.filter(function(x) { return x["state"] == 0 })
     if (aim_list.length > 0) {
         aim_list.sort(function(a, b) { return b['date'] < a['date'] ? 1 : -1 })
@@ -81,8 +81,9 @@ function set_urls() {
 }
 // chrome.storage.local.set({"todo_resource": {}});
 // set_resource()
+// set_urls();
 var TODO_view_start = Date.now();
-var TODO_url = set_urls()
+var TODO_url = window.location.href.split("/")[2];
 
 document.addEventListener("visibilitychange", function() {
     var TODO_view_end;
@@ -150,5 +151,6 @@ window.onload = function() {
             res += resource[i]["encodedBodySize"];
         }
     }
+    set_urls()
     set_resource(res)
 }

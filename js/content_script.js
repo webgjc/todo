@@ -18,17 +18,6 @@ function tip(info) {
     }, 3000);
 }
 
-chrome.storage.local.get(["todo_day_clear", "todo_day"], function(res) {
-    today = new Date().getDate()
-    if (res.todo_day_clear == true && res.todo_day != undefined && res.todo_day != today) {
-        chrome.storage.local.set({ "todo_resource_size": {} })
-        chrome.storage.local.set({ "todo_view_timer": {} })
-        chrome.storage.local.set({ "todo_urls": {} })
-        chrome.storage.local.set({ "todo_day": new Date().getDate() });
-    }
-
-})
-
 chrome.storage.local.get(["aim_list"], function(res) {
     if (res.aim_list == undefined) {
         return
@@ -128,6 +117,7 @@ window.onbeforeunload = function(e) {
 
 function set_resource(size) {
     chrome.storage.local.get(["todo_resource_size"], function(res) {
+        console.log(res)
         if (res.todo_resource_size == undefined) {
             todo_resource_size = {}
         } else {
@@ -144,13 +134,22 @@ function set_resource(size) {
 
 
 window.onload = function() {
-    resource = window.performance.getEntries();
-    res = 0;
-    for (let i = 0; i < resource.length; i++) {
-        if (resource[i]["encodedBodySize"] != undefined) {
-            res += resource[i]["encodedBodySize"];
+    chrome.storage.local.get(["todo_day_clear", "todo_day"], function(res) {
+        today = new Date().getDate()
+        if (res.todo_day_clear == true && res.todo_day != undefined && res.todo_day != today) {
+            chrome.storage.local.set({ "todo_resource_size": {} })
+            chrome.storage.local.set({ "todo_view_timer": {} })
+            chrome.storage.local.set({ "todo_urls": {} })
+            chrome.storage.local.set({ "todo_day": new Date().getDate() });
         }
-    }
-    set_urls()
-    set_resource(res)
+        resource = window.performance.getEntries();
+        res = 0;
+        for (let i = 0; i < resource.length; i++) {
+            if (resource[i]["encodedBodySize"] != undefined) {
+                res += resource[i]["encodedBodySize"];
+            }
+        }
+        set_urls()
+        set_resource(res)
+    })
 }

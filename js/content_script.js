@@ -117,7 +117,6 @@ window.onbeforeunload = function(e) {
 
 function set_resource(size) {
     chrome.storage.local.get(["todo_resource_size"], function(res) {
-        console.log(res)
         if (res.todo_resource_size == undefined) {
             todo_resource_size = {}
         } else {

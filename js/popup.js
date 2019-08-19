@@ -313,11 +313,23 @@ $("#day_clear").click(function() {
     }
 })
 
+$("#task_remind").click(function() {
+    if ($(this).prop('checked') == true) {
+        chrome.storage.local.set({ "todo_task_remind": true })
+    } else {
+        chrome.storage.local.set({ "todo_task_remind": false })
+    }
+})
+
+
 $(document).ready(function() {
-    chrome.storage.local.get(["todo_day_clear"], function(res) {
+    chrome.storage.local.get(["todo_day_clear", "todo_task_remind"], function(res) {
         console.log(res.todo_day_clear)
         if (res.todo_day_clear == true) {
             $("#day_clear").prop('checked', true);
+        }
+        if (res.todo_task_remind == true) {
+            $("#task_remind").prop('checked', true);
         }
     })
 })

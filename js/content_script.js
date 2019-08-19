@@ -18,8 +18,8 @@ function tip(info) {
     }, 3000);
 }
 
-chrome.storage.local.get(["aim_list"], function(res) {
-    if (res.aim_list == undefined) {
+chrome.storage.local.get(["aim_list", "todo_task_remind"], function(res) {
+    if (res.aim_list == undefined || res.todo_task_remind == false || res.todo_task_remind == undefined) {
         return
     }
     aim_list = res.aim_list.filter(function(x) { return x["state"] == 0 })
